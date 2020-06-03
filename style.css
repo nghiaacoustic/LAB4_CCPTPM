@@ -1,0 +1,15 @@
+body {
+    font-family: sans-serif;
+    font-size: 20px;
+    box-sizing: border-box;
+    margin-left: 430px;
+    margin-top: 180px;
+}
+
+.form {
+    font-family: sans-serif;
+    font-size: 28px;
+    box-sizing: border-box;
+    margin-left: 380px;
+    margin-top: 180px;
+}

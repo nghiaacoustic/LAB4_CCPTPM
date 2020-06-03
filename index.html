@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <h1 style="color: blue" style="text-align: center">Dental Payment Form</h1>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body bgcolor="#ffffcc">
+
+    <form action="#" method="GET" onsubmit="return validateForm()">
+        <table>
+            <label for="TenKH">Tên khách hàng </label>
+            <input type="text" name="txtTKH" maxlength="50" notnull id="UserName"><br>
+            <div>
+                <input type="checkbox" name="cv" value="100000" id="cbxCV">Cạo vôi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <label>$100.000</label>
+            </div>
+
+            <div>
+                <input type="checkbox" name="tt" value="1200000" id="cbxTT">Tẩy trắng &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                <label>$1.200.000</label>
+            </div>
+
+            <div>
+                <input type="checkbox" name="chr" value="200000" id="cbxCHR">Chụp hình răng &nbsp; &nbsp; &nbsp; &nbsp;
+                <label>$200.000</label>
+            </div>
+
+            <div>
+                <label for="SLtram">Trám răng:</label>
+                <input type="number" id="quantity" name="quantity" min="0" max="36"> &nbsp; &nbsp; &nbsp;
+                <label>$80.000/cái</label>
+            </div>
+
+            <div>
+                <label for="total">Total</label>
+                <input type="text" name="txtTotal" readonly id="txtTotal"><br>
+            </div>
+        </table>
+    </form>
+    <button onclick="Thoat()">Thoát</button>
+    <button onclick="TinhTien()"> Tính tiền </button>
+    <script>
+        function Thoat() {
+            window.close();
+        }
+    </script>
+    <script>
+        function TinhTien() {
+            var Tong = 0;
+            var caoVoi = document.getElementById("cbxCV");
+            var tayTrang = document.getElementById("cbxTT");
+            var chr = document.getElementById("cbxCHR");
+            var SL = document.getElementById("quantity");
+            var name = document.getElementById("UserName").value;
+            if (caoVoi.checked == true) {
+                // Tong = parseInt(Tong) + parseInt(document.getElementById("cbxCV").value);
+                Tong += Number(caoVoi.value);
+
+            }
+            if (tayTrang.checked == true) {
+                Tong += Number(tayTrang.value);
+                // Tong = parseInt(Tong) + parseInt(document.getElementById("cbxTT").value);
+
+            }
+            if (chr.checked == true) {
+                Tong += Number(chr.value);
+                // Tong = parseInt(Tong) + parseInt(document.getElementById("cbxCHR").value);
+            }
+            if (SL.value != 0) {
+                var x = parseInt(SL.value) * 80000;
+                Tong += Number(x);
+            }
+            if (caoVoi.checked == false && tayTrang.checked == false && chr.checked == false && (SL.checked == null || SL.value == 0)) {
+                alert("Please check again!There is no value in checkbox or numberbox");
+                return false;
+            }
+            document.getElementById("txtTotal").value = Tong + "$";
+            var a = document.getElementById("UserName").value;
+            if (a == "") {
+                alert("Please enter Customer name");
+                return false;
+            } else if (a == Number(a)) {
+                alert("Name is not NUMBER! Please enter right Customer name");
+                return false;
+            }
+            //var x = document.getElementById("txtTotal").value;
+            // x = Tong;
+            //  alert("CustomerName: " + name + "\n" + "Tổng chi phí:=" + x);
+        }
+    </script>
+</body>
+
+</html>
